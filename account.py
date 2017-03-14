@@ -48,5 +48,4 @@ class Account():
 			{"user_name": user_name},
 			{$set: {"password": new_password}}
 		)
-
 		return True
