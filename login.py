@@ -22,6 +22,7 @@ class Login(Resource):
         password = data.get('password')
         if Authentication.check_login(user_name, password):
             user_info = Account.get_user(user_name)
+            user_info.pop('_id')
             return json.dumps(user_info)
         else:
             data = {"response": "Bad Login"}
