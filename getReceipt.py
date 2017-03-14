@@ -17,10 +17,10 @@ class GetReceipt(Resource):
 
     def post(self):
         """
-        {"user_name":"test",
+        '{"user_name":"test",
         "start":20170313,
         "end":20170314
-        }
+        }'
         :return:
         """
         data = request.get_json()
@@ -33,7 +33,7 @@ class GetReceipt(Resource):
 
         receipt = Transaction.get_receipt(user_id,start_date, end_date)
         if receipt:
-            return jsonify(json.dumps(receipt),  mimetype='application/json')
+            return json.dumps(receipt)
         else:
             data = {"response": "No Receipt"}
             return jsonify(data)
