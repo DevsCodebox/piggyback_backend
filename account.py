@@ -59,7 +59,7 @@ class Account():
 
 	@staticmethod
 	def change_password(user_name, old_password, new_password, password_confirm):
-		if not Account.compare_passwords(new_password, password_confirm):
+		if new_password != password_confirm:
 			return False
 		users = client.users
 		users.update(
