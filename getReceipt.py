@@ -16,6 +16,13 @@ class GetReceipt(Resource):
 
 
     def post(self):
+        """
+        {"user_name":"test",
+        "start":20170313,
+        "end":20170314
+        }
+        :return:
+        """
         data = request.get_json()
         if not data:
             data = {"response": "Bad Request"}

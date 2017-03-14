@@ -20,7 +20,8 @@ class Transaction():
             date_set.add(i)
         for entry in user_transactions:
             if entry['start_time'] in date_set:
-                ret.append(entry)
+                entry.pop('_id')
+                transactions.append(entry)
         return transactions
 
     @staticmethod
@@ -33,7 +34,8 @@ class Transaction():
             "end_time": 20170314,
             "data_usage": 12,
             "credit_usage": 31,
-            "users_borrowing": 1
+            "users_borrowing": 1,
+            "user_name":"test"
         }
         :param dict info: dict of info to insert
         :return: None
@@ -45,7 +47,8 @@ class Transaction():
             'end_time': None,
             'data_usage': None,
             'credit_usage': None,
-            'users_borrowing': None
+            'users_borrowing': None,
+            'user_name': None
         }
         transaction_db = client.transactions
         data = {}
