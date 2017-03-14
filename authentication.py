@@ -1,8 +1,10 @@
 from mongo_connection import client
 
 class Authentication:
-    def check_login(self, user_name, password):
+    @staticmethod
+    def check_login(user_name, password):
         users = client.users
-        for user in users.find({"user_name": user_name, "password": password}):
+        user = users.find_one({"user_name": user_name, "password": password})
+        if user:
             return True
         return False
