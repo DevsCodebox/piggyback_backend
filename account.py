@@ -31,7 +31,7 @@ class Account():
 		if Account.find_user(user_name):
 			return False
 		# check if password and password_confirm match
-		if not Account.compare_passwords(password, password_confirm):
+		if password != password_confirm:
 			return False
 		# then create the account
 		data = {}
@@ -56,11 +56,6 @@ class Account():
 			return True
 		return False
 
-	@staticmethod
-	def compare_passwords(password, password_confirm):
-		if password != password_confirm:
-			return False
-		return True
 
 	@staticmethod
 	def change_password(user_name, old_password, new_password, password_confirm):
