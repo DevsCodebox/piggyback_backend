@@ -42,4 +42,4 @@ api.add_resource(AddNewSSID, '/api/addNewSSID', endpoint='add_new_ssid')
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)
