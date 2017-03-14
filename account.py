@@ -24,6 +24,7 @@ class Account():
 		data['email'] = email
 		data['date_of_birth'] = date_of_birth
 		data['password'] = password
+		data['credits'] = 0
 
 		users = client.users
 
