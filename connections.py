@@ -3,7 +3,8 @@ import json
 
 class Connections():
 	# function to return the max strength ssid from a list
-	def strongest_ssid(self, ssid_list):
+	@staticmethod
+	def strongest_ssid(ssid_list):
 		connections = client.connections
 		strongest = 0
 		best_ssid = 0
@@ -15,7 +16,8 @@ class Connections():
 
 		return best_ssid
 
-	def add_new_ssid(self, ssid, ssid_strength):
+	@staticmethod
+	def add_new_ssid(ssid, ssid_strength):
 		connections = client.connections
 
 		data = {}
@@ -25,7 +27,8 @@ class Connections():
 
 		return True
 
-	def update_ssid_strength(self, ssid, ssid_strength):
+	@staticmethod
+	def update_ssid_strength(ssid, ssid_strength):
 		connections = client.connections
 
 		connections.update(

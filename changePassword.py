@@ -22,6 +22,6 @@ class ChangePassword(Resource):
         prev_password = data.get('prev_password')
         password_confirm = data.get('password_confirm')
         if Account.change_password(user_id, prev_password, password, password_confirm):
-            return {'response': 'ok'}
+            return jsonify({'response': 'ok'})
         else:
-            return {'response': 'Bad Request'}
+            return jsonify({'response': 'Bad Request'})

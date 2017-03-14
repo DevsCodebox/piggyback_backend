@@ -1,19 +1,8 @@
 from mongo_connection import client
 
 class Transaction():
-    def __init__(self):
-        self.template_transaction = {
-            'transaction_type': None,
-            'data_type': None,
-            'start_time': None,
-            'end_time': None,
-            'data_usage': None,
-            'credit_usage': None,
-            'users_borrowing': None
-        }
-
-
-    def get_receipt(self, user_id, start, end):
+    @staticmethod
+    def get_receipt(user_id, start, end):
         """
         Returns a list of dicts from the time period for a user
 
@@ -34,16 +23,25 @@ class Transaction():
                 ret.append(entry)
         return transactions
 
-
-    def add_transaction(self, info):
+    @staticmethod
+    def add_transaction(info):
         """
 
         :param dict info: dict of info to insert
         :return: None
         """
+        template_transaction = {
+            'transaction_type': None,
+            'data_type': None,
+            'start_time': None,
+            'end_time': None,
+            'data_usage': None,
+            'credit_usage': None,
+            'users_borrowing': None
+        }
         transaction_db = client.transactions
         data = {}
-        for k,v in self.template_transaction.items():
+        for k,v in template_transaction.items():
             if k in info:
                 data[k] = info[k]
             else:
