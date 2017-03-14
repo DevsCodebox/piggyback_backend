@@ -1,6 +1,6 @@
 from mongo_connection import client
 
-class transaction():
+class Transaction():
     def get_receipt(self, user_id, start, end):
         """
         Returns a list of dicts from the time period for a user
@@ -26,8 +26,9 @@ class transaction():
     def add_transaction(self, info):
         """
 
-        :param info: dict of info to insert
+        :param list info: dict of info to insert
         :return: None
         """
         transaction_db = client.transactions
-        transaction_db.insert_one(info)
+        for entry in info:
+            transaction_db.insert_one(info)
