@@ -7,7 +7,7 @@ class Account():
         user = user_db.find_one({"user_id": user_id})
         return user
     
-    def create_account(self, first_name, last_name, user_name, email, dob, password, password_confirm):
+    def create_account(self, first_name, last_name, user_name, email, date_of_birth, password, password_confirm):
 	# check for user_name already existing
 	if find_user(user_name):
 	    return False
@@ -20,7 +20,7 @@ class Account():
 	data['last_name'] = last_name
 	data['user_name'] = user_name
 	data['email'] = email
-	data['dob'] = dob
+	data['date_of_birth'] = date_of_birth
 	data['password'] = password
 	
 	json_data = json.dumps(data)
