@@ -26,7 +26,15 @@ class Transaction():
     @staticmethod
     def add_transaction(info):
         """
-
+        template_transaction = {
+            "transaction_type": "test",
+            "data_type": "test",
+            "start_time": 20170313,
+            "end_time": 20170314,
+            "data_usage": 12,
+            "credit_usage": 31,
+            "users_borrowing": 1
+        }
         :param dict info: dict of info to insert
         :return: None
         """
@@ -47,5 +55,4 @@ class Transaction():
             else:
                 data[k] = v
 
-        for entry in info:
-            transaction_db.insert_one(data)
+        transaction_db.insert_one(data)
