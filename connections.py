@@ -8,7 +8,7 @@ class Connections():
 		strongest = 0
 		best_ssid = 0
 		for ssid in ssid_list:
-			for connection in connections.find({"ssid": ssid}):
+			for connection in connections.find({'ssid': ssid}):
 				if connection.ssid_strength > strongest:
 					strongest = connection.ssid_strength
 					best_ssid = connection.ssid
@@ -27,7 +27,10 @@ class Connections():
 
 	def update_ssid_strength(self, ssid, ssid_strength):
 		connections = client.connections
+
 		connections.update(
-			{"ssid": ssid},
-			{$set: {"ssid_strength": ssid_strength}}
+			{'ssid': ssid},
+			{$set: {'ssid_strength': ssid_strength}}
 		)
+
+		return True

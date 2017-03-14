@@ -4,7 +4,7 @@ import json
 class Account():
 	def get_user(self, user_id):
 		user_db = client.user
-		user = user_db.find_one({"user_id": user_id})
+		user = user_db.find_one({'user_id': user_id})
 		return user
 	
 	def create_account(self, first_name, last_name, user_name, email, date_of_birth, password, password_confirm):
@@ -31,7 +31,7 @@ class Account():
 
 	def find_user(self, user_name):
 		users = client.users
-		for user in users.find({"user_name": user_name}):
+		for user in users.find({'user_name': user_name}):
 			return True
 		return False
 
@@ -45,7 +45,25 @@ class Account():
 			return False
 		users = client.users
 		users.update(
-			{"user_name": user_name},
-			{$set: {"password": new_password}}
+			{'user_name': user_name},
+			{$set: {'password': new_password}}
 		)
 		return True
+
+	def update_credits(self, user_name, credit_difference):
+		users = client.users
+		old_credit = 0
+		new_credit = 0
+
+		for user in users.find({'user_name': user_name}):
+			old_credit = user.credits
+			new_credit = old_credit + credit_difference
+			break
+
+		users.update(
+			{'user_name': user_name},
+			{$set: {'credits'}: new_credit}
+		)
+		
+		return True
+
