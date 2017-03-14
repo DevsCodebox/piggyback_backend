@@ -29,7 +29,7 @@ class Transaction():
         date_set = set()
         for i in range(start,end+1):
             date_set.add(i)
-        for entry in users_transactions:
+        for entry in user_transactions:
             if entry['start_time'] in date_set:
                 ret.append(entry)
         return transactions
