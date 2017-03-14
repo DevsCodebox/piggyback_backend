@@ -24,11 +24,10 @@ class Account():
 		data['email'] = email
 		data['date_of_birth'] = date_of_birth
 		data['password'] = password
-		
-		json_data = json.dumps(data)
+
 		users = client.users
 
-		result = users.insert_one(json_data)
+		result = users.insert_one(data)
 		return True
 
 	@staticmethod
