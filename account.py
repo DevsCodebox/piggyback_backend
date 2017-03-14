@@ -10,6 +10,23 @@ class Account():
 
 	@staticmethod
 	def create_account(first_name, last_name, user_name, email, date_of_birth, password, password_confirm):
+		"""
+		curl -H "Content-Type: application/json" -X POST localhost:5000/api/createUser -d '{"first_name":"test2",
+		 "last_name":"test", "email":"email",
+        "date_of_birth":"temp",
+        "password":"temp",
+        "Password_confirm":"temp",
+        "user_name":"wtf_a"}'
+
+		:param first_name:
+		:param last_name:
+		:param user_name:
+		:param email:
+		:param date_of_birth:
+		:param password:
+		:param password_confirm:
+		:return:
+		"""
 		# check for user_name already existing
 		if Account.find_user(user_name):
 			return False
@@ -28,7 +45,7 @@ class Account():
 
 		users = client.users
 
-		result = users.insert_one(data)
+		users.insert_one(data)
 		return True
 
 	@staticmethod
