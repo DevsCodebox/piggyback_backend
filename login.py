@@ -2,6 +2,7 @@ from flask import Flask, jsonify, url_for, redirect, request
 from flask.ext.restful import Api, Resource, reqparse, fields, marshal
 from authentication import Authentication
 from account import Account
+import json
 
 class Login(Resource):
     def __init__(self):
@@ -21,7 +22,7 @@ class Login(Resource):
         password = data.get('password')
         if Authentication.check_login(user_name, password):
             user_info = Account.get_user(user_name)
-            return jsonify(user_info)
+            return json.dumps(user_info)
         else:
             data = {"response": "Bad Login"}
             return jsonify(data)
