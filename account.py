@@ -6,7 +6,7 @@ class Account():
 		user_db = client.user
 		user = user_db.find_one({"user_id": user_id})
 		return user
-    
+	
 	def create_account(self, first_name, last_name, user_name, email, date_of_birth, password, password_confirm):
 	# check for user_name already existing
 	if self.find_user(user_name):
@@ -37,17 +37,17 @@ class Account():
 
 	def compare_passwords(self, password, password_confirm):
 		if (password != password_confirm):
-	    	return False
+			return False
 		return True
 
 	def change_password(self, user_name, old_password, new_password, password_confirm):
 		if not compare_passwords(new_password, password_confirm):
-	    	return False
+			return False
 		users = client.users
 		users.update(
 			{"user_name": user_name},
 				{$set: "password": new_password}
-	    	}
+			}
 		)
 	
 		return True
