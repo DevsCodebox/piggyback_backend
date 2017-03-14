@@ -11,10 +11,10 @@ class Account():
 	@staticmethod
 	def create_account(first_name, last_name, user_name, email, date_of_birth, password, password_confirm):
 		# check for user_name already existing
-		if find_user(user_name):
+		if Account.find_user(user_name):
 			return False
 		# check if password and password_confirm match
-		if not compare_passwords(password, password_confirm):
+		if not Account.compare_passwords(password, password_confirm):
 			return False
 		# then create the account
 		data = {}
@@ -46,7 +46,7 @@ class Account():
 
 	@staticmethod
 	def change_password(user_name, old_password, new_password, password_confirm):
-		if not compare_passwords(new_password, password_confirm):
+		if not Account.compare_passwords(new_password, password_confirm):
 			return False
 		users = client.users
 		users.update(
