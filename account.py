@@ -41,13 +41,12 @@ class Account():
 		return True
 
 	def change_password(self, user_name, old_password, new_password, password_confirm):
-		if not compare_passwords(new_password, password_confirm):
+		if not self.compare_passwords(new_password, password_confirm):
 			return False
 		users = client.users
 		users.update(
 			{"user_name": user_name},
-				{$set: "password": new_password}
-			}
+			{$set: {"password": new_password}}
 		)
-	
+
 		return True
