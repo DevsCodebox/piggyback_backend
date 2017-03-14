@@ -3,9 +3,9 @@ import json
 
 class Account():
 	@staticmethod
-	def get_user(user_id):
+	def get_user(user_name):
 		user_db = client.user
-		user = user_db.find_one({'user_id': user_id})
+		user = user_db.find_one({'user_name': user_name})
 		return user
 
 	@staticmethod
