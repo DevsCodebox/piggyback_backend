@@ -8,32 +8,32 @@ class Account():
 		return user
 	
 	def create_account(self, first_name, last_name, user_name, email, date_of_birth, password, password_confirm):
-	# check for user_name already existing
-	if self.find_user(user_name):
-		return False
-	# check if password and password_confirm match
-	if not self.compare_passwords(password, password_confirm):
-		return False
-	# then create the account
+		# check for user_name already existing
+		if self.find_user(user_name):
+			return False
+		# check if password and password_confirm match
+		if not self.compare_passwords(password, password_confirm):
+			return False
+		# then create the account
 		data = {}
-	data['first_name'] = first_name
-	data['last_name'] = last_name
-	data['user_name'] = user_name
-	data['email'] = email
-	data['date_of_birth'] = date_of_birth
-	data['password'] = password
-	
-	json_data = json.dumps(data)
-	users = client.users
+		data['first_name'] = first_name
+		data['last_name'] = last_name
+		data['user_name'] = user_name
+		data['email'] = email
+		data['date_of_birth'] = date_of_birth
+		data['password'] = password
+		
+		json_data = json.dumps(data)
+		users = client.users
 
-	result = users.insert_one(json_data)
-	return True
+		result = users.insert_one(json_data)
+		return True
 
 	def find_user(self, user_name):
-	users = client.users
-	for user in users.find({"user_name": user_name}):
-		return True
-	return False
+		users = client.users
+		for user in users.find({"user_name": user_name}):
+			return True
+		return False
 
 	def compare_passwords(self, password, password_confirm):
 		if (password != password_confirm):
