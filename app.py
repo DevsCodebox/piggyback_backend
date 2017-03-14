@@ -27,10 +27,13 @@ def unauthorized():
     return make_response(jsonify({'message': 'Unauthorized access'}), 403)
 
 api.add_resource(Login, '/api/login', endpoint='login')
+
 api.add_resource(AddTransaction, 'api/transaction', endpoint='add_transaction')
-api.add_resource(GetReceipt, 'api/receipt', endpoint='get_receipt')
+api.add_resource(GetReceipt, 'api/receipt', endpoint='get_receipt'
+
 api.add_resource(ChangePassword, 'api/changePassword', endpoint='change_password')
 api.add_resource(UpdateCredits, 'api/updateCredits', endpoint='update_credits')
+
 api.add_resource(UpdateSSIDStrength, 'api/updateSSIDStrength', endpoint='update_ssid_strength')
 api.add_resource(GetStrongestSSID, 'api/getStrongestSSID', endpoint='get_strongest_ssid')
 api.add_resource(AddNewSSID, 'api/addNewSSID', endpoint='add_new_ssid')

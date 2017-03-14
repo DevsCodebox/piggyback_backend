@@ -11,15 +11,6 @@ class AddNewSSID(Resource):
         super(TaskAPI, self).__init__()
 
 
-    # def add_new_ssid(self, ssid, ssid_strength):
-    #     connections = client.connections
-    #
-    #     data = {}
-    #     data['ssid'] = ssid
-    #     data['ssid_strength'] = ssid_strength
-    #     connections.insert_one(data)
-    #
-    #     return True
     def post(self):
         data = request.get_json()
         if not data:
