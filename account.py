@@ -52,17 +52,14 @@ class Account():
 
 	def update_credits(self, user_name, credit_difference):
 		users = client.users
-		old_credit = 0
-		new_credit = 0
+		credit = 0
 
-		for user in users.find({'user_name': user_name}):
-			old_credit = user.credits
-			new_credit = old_credit + credit_difference
-			break
+		user = users.find_one({'user_name': user_name}):
+		credit = user.credits + credit_difference
 
 		users.update(
 			{'user_name': user_name},
-			{$set: {'credits'}: new_credit}
+			{$set: {'credits': credit}}
 		)
 		
 		return True
