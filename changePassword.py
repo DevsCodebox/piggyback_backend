@@ -13,15 +13,23 @@ class ChangePassword(Resource):
 
 
     def post(self):
+        """
+        '{
+        "user_name":"test",
+        "password":"test2",
+        "password_confirm":"test2"
+        }'
+        :return:
+        """
         data = request.get_json()
         if not data:
-            data = {"response": "Bad Login"}
+            data = {"response": "Bad Request"}
             return jsonify(data)
-        user_id = data.get('user_id')
+        user_name = data.get('user_name')
         password = data.get('password')
         prev_password = data.get('prev_password')
         password_confirm = data.get('password_confirm')
-        if Account.change_password(user_id, prev_password, password, password_confirm):
+        if Account.change_password(user_name, prev_password, password, password_confirm):
             return jsonify({'response': 'ok'})
         else:
             return jsonify({'response': 'Bad Request'})
