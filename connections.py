@@ -10,7 +10,7 @@ class Connections():
 		best_ssid = 0
 		for ssid in ssid_list:
 			connection = connections.find_one({'ssid': ssid})
-			if connection['ssid_strength'] > strongest:
+			if connection['ssid_strength'] >= strongest:
 				strongest = connection['ssid_strength']
 				best_ssid = connection['ssid']
 		return best_ssid
