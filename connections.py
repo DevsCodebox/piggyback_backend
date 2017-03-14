@@ -23,6 +23,10 @@ class Connections():
 		data = {}
 		data['ssid'] = ssid
 		data['ssid_strength'] = ssid_strength
+		temp = connections.find_one({'ssid': ssid})
+		if temp:
+			return False
+
 		connections.insert_one(data)
 
 		return True

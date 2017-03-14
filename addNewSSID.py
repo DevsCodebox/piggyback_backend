@@ -20,7 +20,7 @@ class AddNewSSID(Resource):
         ssid_strength = data.get('ssid_strength')
         response = {}
         if Connections.add_new_ssid(ssid, ssid_strength):
-            response['response'] = "SSID updated"
+            response['response'] = "SSID created"
         else:
             response['response'] = "SSID Failed to Create"
         return jsonify(response)
