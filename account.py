@@ -2,17 +2,19 @@ from mongo_connection import client
 import json
 
 class Account():
-	def get_user(self, user_id):
+	@staticmethod
+	def get_user(user_id):
 		user_db = client.user
 		user = user_db.find_one({'user_id': user_id})
 		return user
-	
-	def create_account(self, first_name, last_name, user_name, email, date_of_birth, password, password_confirm):
+
+	@staticmethod
+	def create_account(first_name, last_name, user_name, email, date_of_birth, password, password_confirm):
 		# check for user_name already existing
-		if self.find_user(user_name):
+		if find_user(user_name):
 			return False
 		# check if password and password_confirm match
-		if not self.compare_passwords(password, password_confirm):
+		if not compare_passwords(password, password_confirm):
 			return False
 		# then create the account
 		data = {}
@@ -29,22 +31,22 @@ class Account():
 		result = users.insert_one(json_data)
 		return True
 
-
-	def find_user(self, user_name):
+	@staticmethod
+	def find_user( user_name):
 		users = client.users
 		for user in users.find({'user_name': user_name}):
 			return True
 		return False
 
-
-	def compare_passwords(self, password, password_confirm):
-		if (password != password_confirm):
+	@staticmethod
+	def compare_passwords(password, password_confirm):
+		if password != password_confirm:
 			return False
 		return True
 
-
-	def change_password(self, user_name, old_password, new_password, password_confirm):
-		if not self.compare_passwords(new_password, password_confirm):
+	@staticmethod
+	def change_password(user_name, old_password, new_password, password_confirm):
+		if not compare_passwords(new_password, password_confirm):
 			return False
 		users = client.users
 		users.update(
@@ -53,8 +55,8 @@ class Account():
 		)
 		return True
 
-
-	def update_credits(self, user_name, credit_difference):
+	@staticmethod
+	def update_credits( user_name, credit_difference):
 		users = client.users
 		credit = 0
 
