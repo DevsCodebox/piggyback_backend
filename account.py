@@ -34,7 +34,8 @@ class Account():
 	@staticmethod
 	def find_user( user_name):
 		users = client.users
-		for user in users.find_one({'user_name': user_name}):
+		temp = users.find_one({'user_name': user_name})
+		if temp:
 			return True
 		return False
 
