@@ -12,7 +12,6 @@ class Connections():
 				if connection.ssid_strength > strongest:
 					strongest = connection.ssid_strength
 					best_ssid = connection.ssid
-				break
 
 		return best_ssid
 
@@ -22,9 +21,7 @@ class Connections():
 		data = {}
 		data['ssid'] = ssid
 		data['ssid_strength'] = ssid_strength
-
-		json_data = json.dumps(data)
-		result = connections.insert_one(json_data)
+		result = connections.insert_one(data)
 
 		return True
 
