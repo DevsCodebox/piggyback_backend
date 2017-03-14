@@ -74,7 +74,7 @@ class Account():
 		credit = 0
 
 		user = users.find_one({'user_name': user_name})
-		credit = user.credits + credit_difference
+		credit = user['credits'] + credit_difference
 
 		users.update(
 			{'user_name': user_name},

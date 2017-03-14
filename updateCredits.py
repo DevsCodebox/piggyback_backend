@@ -14,6 +14,10 @@ class UpdateCredits(Resource):
 
 
     def post(self):
+        """
+        '{"credit_difference": 12, "user_name":"test"}'
+        :return:
+        """
         data = request.get_json()
         if not data:
             data = {"response": "Bad Request"}
