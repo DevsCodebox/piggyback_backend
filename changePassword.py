@@ -9,7 +9,7 @@ class ChangePassword(Resource):
         self.reqparse.add_argument('title', type=str, location='json')
         self.reqparse.add_argument('description', type=str, location='json')
         self.reqparse.add_argument('done', type=bool, location='json')
-        super(TaskAPI, self).__init__()
+        super(ChangePassword, self).__init__()
 
 
     def post(self):

@@ -10,10 +10,22 @@ class CreateUser(Resource):
         self.reqparse.add_argument('title', type=str, location='json')
         self.reqparse.add_argument('description', type=str, location='json')
         self.reqparse.add_argument('done', type=bool, location='json')
-        super(TaskAPI, self).__init__()
+        super(CreateUser, self).__init__()
 
 
     def post(self):
+        """
+        data reqs:
+        {"first_name":"test",
+        "last_name":"test",
+        "email":"email",
+        "date_of_birth":"temp",
+        "password":"temp",
+        "password_confirm":"temp"
+        }
+
+        :return:
+        """
         data = request.get_json()
         if not data:
             data = {"response": "Bad Request"}
