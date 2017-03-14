@@ -4,7 +4,7 @@ from account import Account
 import json
 
 
-class CreateUser(Resource):
+class UpdateCredits(Resource):
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
         self.reqparse.add_argument('title', type=str, location='json')
@@ -18,16 +18,11 @@ class CreateUser(Resource):
         if not data:
             data = {"response": "Bad Request"}
             return jsonify(data)
-        first_name = data.get('first_name')
-        last_name = data.get('last_name')
+        credit_difference = data.get('credit_difference')
         user_name = data.get('user_name')
-        email = data.get('email')
-        date_of_birth = data.get('date_of_birth')
-        password = data.get('password')
-        password_confirm = data.get('password_confirm')
         response = {}
-        if Account.create_account(first_name, last_name, user_name, email, date_of_birth, password, password_confirm):
-            response['response'] =  "Account Created"
+        if Account.update_credits(user_name, credit_difference):
+            response['response'] = 'Credits updated'
         else:
-            response['response'] = "Account Creation Failed"
+            response['response'] = 'Credit Update Failed'
         return jsonify(response)

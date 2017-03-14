@@ -6,6 +6,7 @@ from login import Login
 from addTransaction import AddTransaction
 from getReceipt import GetReceipt
 from changePassword import ChangePassword
+from updateCredits import UpdateCredits
 from flask import Flask, jsonify, abort, make_response
 from flask.ext.restful import Api, Resource, reqparse, fields, marshal
 from flask.ext.httpauth import HTTPBasicAuth
@@ -25,6 +26,7 @@ api.add_resource(Login, '/api/login', endpoint='login')
 api.add_resource(AddTransaction, 'api/transaction', endpoint='add_transaction')
 api.add_resource(GetReceipt, 'api/receipt', endpoint='get_receipt')
 api.add_resource(ChangePassword, 'api/changePassword', endpoint='change_password')
+api.add_resource(UpdateCredits, 'api/updateCredits', endpoint='update_credits')
 
 
 if __name__ == '__main__':
