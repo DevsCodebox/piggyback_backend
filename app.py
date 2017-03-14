@@ -5,6 +5,7 @@ Flask-RESTful extension."""
 from login import Login
 from addTransaction import AddTransaction
 from getReceipt import GetReceipt
+from createUser import CreateUser
 from changePassword import ChangePassword
 from updateCredits import UpdateCredits
 from updateSSIDStrength import UpdateSSIDStrength
@@ -28,15 +29,16 @@ def unauthorized():
 
 api.add_resource(Login, '/api/login', endpoint='login')
 
-api.add_resource(AddTransaction, 'api/transaction', endpoint='add_transaction')
-api.add_resource(GetReceipt, 'api/receipt', endpoint='get_receipt')
+api.add_resource(AddTransaction, '/api/transaction', endpoint='add_transaction')
+api.add_resource(GetReceipt, '/api/receipt', endpoint='get_receipt')
 
-api.add_resource(ChangePassword, 'api/changePassword', endpoint='change_password')
-api.add_resource(UpdateCredits, 'api/updateCredits', endpoint='update_credits')
+api.add_resource(CreateUser, '/api/createUser', endpoint='create_user')
+api.add_resource(ChangePassword, '/api/changePassword', endpoint='change_password')
+api.add_resource(UpdateCredits, '/api/updateCredits', endpoint='update_credits')
 
-api.add_resource(UpdateSSIDStrength, 'api/updateSSIDStrength', endpoint='update_ssid_strength')
-api.add_resource(GetStrongestSSID, 'api/getStrongestSSID', endpoint='get_strongest_ssid')
-api.add_resource(AddNewSSID, 'api/addNewSSID', endpoint='add_new_ssid')
+api.add_resource(UpdateSSIDStrength, '/api/updateSSIDStrength', endpoint='update_ssid_strength')
+api.add_resource(GetStrongestSSID, '/api/getStrongestSSID', endpoint='get_strongest_ssid')
+api.add_resource(AddNewSSID, '/api/addNewSSID', endpoint='add_new_ssid')
 
 
 if __name__ == '__main__':
