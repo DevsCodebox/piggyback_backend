@@ -3,8 +3,10 @@ from flask.ext.restful import Api, Resource, reqparse, fields, marshal
 from authentication import Authentication
 from transaction import Transaction
 
+import json
 
-class AddTransaction(Resource):
+
+class GetReceipt(Resource):
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
         self.reqparse.add_argument('title', type=str, location='json')
@@ -16,9 +18,15 @@ class AddTransaction(Resource):
     def post(self):
         data = request.get_json()
         if not data:
-            data = {"response": "Bad request"}
+            data = {"response": "Bad Request"}
             return jsonify(data)
+        user_id = data.get('user_id')
+        start_date = data.get('start')
+        end_date = data.get('end')
 
-        Transaction.add_transaction(data)
-        data = {"response": "Successful request"}
-        return jsonify(data)
+        receipt = Transaction.get_receipt(user_id,start_date, end_date)
+        if receipt:
+            return jsonify(json.dumps(receipt),  mimetype='application/json')
+        else:
+            data = {"response": "No Receipt"}
+            return jsonify(data)

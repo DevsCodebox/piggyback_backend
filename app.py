@@ -115,7 +115,7 @@ api.add_resource(TaskListAPI, '/todo/api/v1.0/tasks', endpoint='tasks')
 api.add_resource(TaskAPI, '/todo/api/v1.0/tasks/<int:id>', endpoint='task')
 api.add_resource(Login, '/api/login', endpoint='login')
 api.add_resource(AddTransaction, 'api/transaction', endpoint='add_transaction')
-
+api.add_resource(GetReceipt, 'api/receipt', endpoint='get_receipt')
 
 if __name__ == '__main__':
     app.run(debug=True)
