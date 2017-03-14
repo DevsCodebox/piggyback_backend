@@ -30,7 +30,7 @@ class Connections():
 
 		connections.update(
 			{'ssid': ssid},
-			{$set: {'ssid_strength': ssid_strength}}
+			{'$set': {'ssid_strength': ssid_strength}}
 		)
 
 		return True

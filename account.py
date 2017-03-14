@@ -29,16 +29,19 @@ class Account():
 		result = users.insert_one(json_data)
 		return True
 
+
 	def find_user(self, user_name):
 		users = client.users
 		for user in users.find({'user_name': user_name}):
 			return True
 		return False
 
+
 	def compare_passwords(self, password, password_confirm):
 		if (password != password_confirm):
 			return False
 		return True
+
 
 	def change_password(self, user_name, old_password, new_password, password_confirm):
 		if not self.compare_passwords(new_password, password_confirm):
@@ -46,20 +49,21 @@ class Account():
 		users = client.users
 		users.update(
 			{'user_name': user_name},
-			{$set: {'password': new_password}}
+			{'$set': {'password': new_password}}
 		)
 		return True
+
 
 	def update_credits(self, user_name, credit_difference):
 		users = client.users
 		credit = 0
 
-		user = users.find_one({'user_name': user_name}):
+		user = users.find_one({'user_name': user_name})
 		credit = user.credits + credit_difference
 
 		users.update(
 			{'user_name': user_name},
-			{$set: {'credits': credit}}
+			{'$set': {'credits': credit}}
 		)
 		
 		return True
