@@ -17,7 +17,7 @@ class Login(Resource):
         if not data:
             data = {"response": "Bad Login"}
             return jsonify(data)
-        user_id = data.get('user_id')
+        user_id = data.get('user_name')
         password = data.get('password')
         if Authentication.check_login(user_id, password):
             user_info = Account.get_user(user_id)
