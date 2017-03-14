@@ -21,7 +21,7 @@ class Login(Resource):
         password = data.get('password')
         if Authentication.check_login(user_id, password):
             user_info = Account.get_user(user_id)
-            return jsonify(user_info)
+            return {"response": "test"}
         else:
             data = {"response": "Bad Login"}
             return jsonify(data)
