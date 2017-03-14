@@ -7,6 +7,10 @@ from addTransaction import AddTransaction
 from getReceipt import GetReceipt
 from changePassword import ChangePassword
 from updateCredits import UpdateCredits
+from updateSSIDStrength import UpdateSSIDStrength
+from getStrongestSSID import GetStrongestSSID
+from addNewSSID import AddNewSSID
+
 from flask import Flask, jsonify, abort, make_response
 from flask.ext.restful import Api, Resource, reqparse, fields, marshal
 from flask.ext.httpauth import HTTPBasicAuth
@@ -27,6 +31,9 @@ api.add_resource(AddTransaction, 'api/transaction', endpoint='add_transaction')
 api.add_resource(GetReceipt, 'api/receipt', endpoint='get_receipt')
 api.add_resource(ChangePassword, 'api/changePassword', endpoint='change_password')
 api.add_resource(UpdateCredits, 'api/updateCredits', endpoint='update_credits')
+api.add_resource(UpdateSSIDStrength, 'api/updateSSIDStrength', endpoint='update_ssid_strength')
+api.add_resource(GetStrongestSSID, 'api/getStrongestSSID', endpoint='get_strongest_ssid')
+api.add_resource(AddNewSSID, 'api/addNewSSID', endpoint='add_new_ssid')
 
 
 if __name__ == '__main__':

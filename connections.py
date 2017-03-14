@@ -21,7 +21,7 @@ class Connections():
 		data = {}
 		data['ssid'] = ssid
 		data['ssid_strength'] = ssid_strength
-		result = connections.insert_one(data)
+		connections.insert_one(data)
 
 		return True
 
