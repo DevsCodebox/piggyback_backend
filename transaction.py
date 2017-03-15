@@ -1,4 +1,5 @@
 from mongo_connection import client
+import time
 
 class Transaction():
     @staticmethod
@@ -7,20 +8,21 @@ class Transaction():
         Returns a list of dicts from the time period for a user
 
         :param user_id:
-        :param start: must be int YYYYMMDD
-        :param end: int YYYYMMDD
+        :param start: must be epoch
+        :param end: epoch int
         :return:
         """
         transaction_db = client.transactions
         users_transactions_cursor = transaction_db.find({"user_id": user_id})
         user_transactions = [ i for i in users_transactions_cursor]
         transactions = []
-        date_set = set()
-        for i in range(start,end+1):
-            date_set.add(i)
         for entry in user_transactions:
-            if entry['start_time'] in date_set:
+            cur_start = entry['start_time']
+            cur_end = entry['end_time']
+            if start < cur_start < end:
                 entry.pop('_id')
+                entry['start_time'] = time.strftime('%m/%d/%Y %H:%M:%S', time.gmtime(cur_start/1000.))
+                entry['end_time'] = time.strftime('%m/%d/%Y %H:%M:%S', time.gmtime(cur_end / 1000.))
                 transactions.append(entry)
         return transactions
 
