@@ -128,7 +128,7 @@ class Connections():
 
             return True
         else:
-            Connections.add_new_ssid(user_name, ssid, ssid_strength, None)
+            Connections.add_new_ssid(user_name, ssid, ssid_strength)
             return False
 
     @staticmethod
