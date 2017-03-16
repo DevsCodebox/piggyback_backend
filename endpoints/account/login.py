@@ -27,4 +27,4 @@ class Login(Resource):
             return user_info
         else:
             data = {"response": "Bad Login"}
-            return jsonify(data)
+            return jsonify(data), 500
