@@ -15,6 +15,7 @@ class Transaction():
         :param end: epoch int
         :return:
         """
+        return []
         transaction_db = client.transactions
         print(transaction_db)
         transaction_db.find()
