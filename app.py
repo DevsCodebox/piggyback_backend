@@ -6,12 +6,11 @@ Flask-RESTful extension."""
 from flask import Flask, jsonify, make_response
 from flask.ext.httpauth import HTTPBasicAuth
 from flask.ext.restful import Api
-from getReceipt import GetReceipt
-from updateCredits import UpdateCredits
 
 from endpoints.account.changePassword import ChangePassword
 from endpoints.account.createUser import CreateUser
 from endpoints.account.login import Login
+from endpoints.account.updateCredits import UpdateCredits
 
 from endpoints.connections.addNewSSID import AddNewSSID
 from endpoints.connections.getStrongestSSID import GetStrongestSSID
@@ -21,6 +20,8 @@ from endpoints.connections.getBandwidthUsed import GetBandwidthUsed
 from endpoints.connections.updateFriends import UpdateFriends
 
 from endpoints.transaction.addTransaction import AddTransaction
+from endpoints.transaction.getReceipt import GetReceipt
+from endpoints.transaction.clientPollingUpdate import ClientPollingUpdate
 
 app = Flask(__name__, static_url_path="")
 api = Api(app)
@@ -47,12 +48,9 @@ api.add_resource(GetBandwidthUsed, '/api/getBandwidthUsed', endpoint='get_bandwi
 api.add_resource(UpdateFriends, '/api/updateFriends', endpoint='update_friends')
 
 #transaction
-#authentication
-
-
 api.add_resource(AddTransaction, '/api/transaction', endpoint='add_transaction')
 api.add_resource(GetReceipt, '/api/receipt', endpoint='get_receipt')
-
+api.add_resource(ClientPollingUpdate, '/api/clientPollingUpdate', endpoint='client_polling_update')
 
 
 
