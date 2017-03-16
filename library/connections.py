@@ -108,7 +108,7 @@ class Connections():
         return True
 
     @staticmethod
-    def init_connections(ssid):
+    def init_connections(user_name, ssid, ssid_strength):
         """
         returns previous set ssid, sets credits and bandwidth to 0
         :param ssid:
@@ -124,6 +124,7 @@ class Connections():
 
             return True
         else:
+            Connections.add_new_ssid(user_name, ssid, ssid_strength, None)
             return False
 
     @staticmethod

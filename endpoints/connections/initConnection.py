@@ -18,11 +18,13 @@ class InitConnection(Resource):
         if not data:
             data = {"response": "Bad Request"}
             return jsonify(data)
+        user_name = data.get('user_name')
         ssid = data.get('ssid')
+        ssid_strength = data.get('ssid_strength')
         response = {}
-        if Connections.init_connections(ssid):
+        if Connections.init_connections(user_name, ssid, ssid_strength):
             response['response'] = "SSID initialised"
             return jsonify(response)
         else:
-            response['response'] = "SSID failed to update"
-            return make_response(jsonify(response), 500)
+            response['response'] = "SSID created and initialized"
+            return jsonify(response)
