@@ -66,14 +66,14 @@ class Transaction():
         transaction_db.insert_one(data)
 
     @staticmethod
-    def client_polling_update(ssid, user_name, credits, bandwidth):
+    def client_polling_update(ssid, user_name, credit, bandwidth):
         friends = Connections.get_friends(ssid)
 
         if user_name not in friends:
-            Account.update_credits(user_name, -credits)
-            Connections.update_credits(ssid, credits)
+            Account.update_credits(user_name, -credit)
+            Connections.update_credits(ssid, credit)
             host_name = Connections.get_user_name(ssid)
-            Account.update_credits(host_name, credits)
+            Account.update_credits(host_name, credit)
 
         Connections.update_bandwidth(ssid, bandwidth)
 
