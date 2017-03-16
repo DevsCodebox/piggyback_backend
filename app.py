@@ -16,7 +16,7 @@ from endpoints.connections.addNewSSID import AddNewSSID
 from endpoints.connections.getStrongestSSID import GetStrongestSSID
 from endpoints.connections.updateSSIDStrength import UpdateSSIDStrength
 from endpoints.connections.initConnection import InitConnection
-from endpoints.connections.getBandwidthUsed import GetBandwidthUsed
+from endpoints.connections.getCriteriaUsed import GetCriteriaUsed
 from endpoints.connections.updateFriends import UpdateFriends
 
 from endpoints.transaction.addTransaction import AddTransaction
@@ -44,7 +44,7 @@ api.add_resource(UpdateSSIDStrength, '/api/updateSSIDStrength', endpoint='update
 api.add_resource(GetStrongestSSID, '/api/getStrongestSSID', endpoint='get_strongest_ssid')
 api.add_resource(AddNewSSID, '/api/addNewSSID', endpoint='add_new_ssid')
 api.add_resource(InitConnection, '/api/initConnection', endpoint='init_connection')
-api.add_resource(GetBandwidthUsed, '/api/getBandwidthUsed', endpoint='get_bandwidth_used')
+api.add_resource(GetCriteriaUsed, '/api/getCriteriaUsed', endpoint='get_criteria_used')
 api.add_resource(UpdateFriends, '/api/updateFriends', endpoint='update_friends')
 
 #transaction

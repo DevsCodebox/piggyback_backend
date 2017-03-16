@@ -4,13 +4,13 @@ from flask.ext.restful import Resource, reqparse
 from library.connections import Connections
 
 
-class GetBandwidthUsed(Resource):
+class GetCriteriaUsed(Resource):
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
         self.reqparse.add_argument('title', type=str, location='json')
         self.reqparse.add_argument('description', type=str, location='json')
         self.reqparse.add_argument('done', type=bool, location='json')
-        super(GetBandwidthUsed, self).__init__()
+        super(GetCriteriaUsed, self).__init__()
 
     def post(self):
         data = request.get_json()
@@ -18,10 +18,9 @@ class GetBandwidthUsed(Resource):
             data = {"response": "Bad Request"}
             return jsonify(data)
 
-        response = {}
         ssid = data.get('ssid')
-        response['SSID'] = Connections.get_bandwidth_used(ssid)
-        if response['SSID']:
-            return jsonify(response)
+        result = Connections.get_criteria_used(ssid)
+        if result:
+            return result
         else:
-            return make_response(jsonify(response), 500)
+            return make_response(jsonify(result), 500)

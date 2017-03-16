@@ -132,7 +132,7 @@ class Connections():
             return False
 
     @staticmethod
-    def get_bandwidth_used(ssid):
+    def get_criteria_used(ssid):
         """
         returns the bandwidth used on a ssid
         :param ssid:
@@ -141,7 +141,7 @@ class Connections():
         connections = client.connections
         row = connections.find_one({'ssid': ssid})
         if row:
-            return row['bandwidth']
+            return row
         else:
             return False
 
