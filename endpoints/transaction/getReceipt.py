@@ -35,7 +35,9 @@ class GetReceipt(Resource):
         receipt = Transaction.get_receipt(user_name, start_time, end_time)
         print(receipt)
         if receipt:
-            return json.dumps(receipt)
+            return_res = json.dumps(receipt)
+            print(return_res)
+            return return_res
         else:
             data = {"response": "No Receipt"}
             return make_response(jsonify(data), 500)
