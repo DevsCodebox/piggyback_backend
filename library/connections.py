@@ -70,8 +70,11 @@ class Connections():
     def get_friends(ssid):
         connections = client.connections
         row = connections.find_one({'ssid': ssid})
-        friends = row['friends']
-        return friends
+        if row:
+            friends = row['friends']
+            return friends
+        else:
+            return False
 
     @staticmethod
     def update_bandwidth(ssid, bandwidth_difference):
