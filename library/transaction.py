@@ -58,7 +58,7 @@ class Transaction():
                 data[k] = info[k]
             else:
                 data[k] = v
-        data.pop('_id')
+
         transaction_db.insert_one(data)
         client_info = Account.get_user(data['user_name'])
 
