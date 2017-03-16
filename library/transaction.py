@@ -64,6 +64,10 @@ class Transaction():
                 data[k] = v
 
         transaction_db.insert_one(data)
+        data['transaction_type'] = 'host'
+        data['user_name'] = data['host']
+        transaction_db.insert_one(data)
+
 
     @staticmethod
     def client_polling_update(ssid, user_name, credit, bandwidth):
