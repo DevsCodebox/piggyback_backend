@@ -78,7 +78,8 @@ class Transaction():
             Account.update_credits(user_name, -credit)
             Connections.update_credits(ssid, credit)
             host_name = Connections.get_user_name(ssid)
-            Account.update_credits(host_name, credit)
+            if host_name:
+                Account.update_credits(host_name, credit)
 
         Connections.update_bandwidth(ssid, bandwidth)
 
