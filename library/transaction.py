@@ -39,7 +39,6 @@ class Transaction():
             "end_time": 20170314,
             "data_usage": 12,
             "credit_usage": 31,
-            "users_borrowing": 1,
             "user_name":"test"
         }
         :param dict info: dict of info to insert
@@ -52,7 +51,6 @@ class Transaction():
             'end_time': None,
             'data_usage': None,
             'credit_usage': None,
-            'users_borrowing': None,
             'user_name': None
         }
         transaction_db = client.transactions
