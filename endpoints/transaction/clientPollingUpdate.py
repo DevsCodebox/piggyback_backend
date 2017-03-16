@@ -21,7 +21,7 @@ class ClientPollingUpdate(Resource):
         ssid = data.get('ssid')
         user_name = data.get('user_name')
         credit_usage = data.get('credit_usage')
-        bandwidth = data.get('bandwidth')
+        bandwidth = data.get('data_usage')
         remaining = Transaction.client_polling_update(ssid, user_name, credit_usage, bandwidth)
         data = {"credits_remaining": remaining}
         if remaining:
