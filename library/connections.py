@@ -56,7 +56,11 @@ class Connections():
 
         connections.update(
             {'ssid': ssid},
-            {'$set': {'friends': {'$each': friends}}}
+            {'$set': {'friends': None}}
+        )
+        connections.update(
+            {'ssid': ssid},
+            {'$push': {'friends': {'$each': friends}}}
         )
         return True
 
