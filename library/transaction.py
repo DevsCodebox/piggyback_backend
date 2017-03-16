@@ -16,9 +16,12 @@ class Transaction():
         :return:
         """
         transaction_db = client.transactions
-        users_transactions_cursor = transaction_db.find({"user_name": user_name})
+        users_transactions_cursor = transaction_db.find()
         print(users_transactions_cursor)
-        user_transactions = [ i for i in users_transactions_cursor]
+        user_transactions = []
+        for item in users_transactions_cursor:
+            if item['user_name'] == user_name:
+                user_transactions.append(item)
         transactions = []
         for entry in user_transactions:
             cur_start = entry['start_time']
