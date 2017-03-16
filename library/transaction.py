@@ -71,7 +71,8 @@ class Transaction():
 
     @staticmethod
     def client_polling_update(ssid, user_name, credit, bandwidth):
-        friends = Connections.get_friends(ssid)
+
+        friends = Connections.get_friends(ssid) or []
 
         if user_name not in friends:
             Account.update_credits(user_name, -credit)
