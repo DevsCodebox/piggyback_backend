@@ -12,11 +12,14 @@ from updateCredits import UpdateCredits
 from endpoints.account.changePassword import ChangePassword
 from endpoints.account.createUser import CreateUser
 from endpoints.account.login import Login
+
 from endpoints.connections.addNewSSID import AddNewSSID
 from endpoints.connections.getStrongestSSID import GetStrongestSSID
 from endpoints.connections.updateSSIDStrength import UpdateSSIDStrength
 from endpoints.connections.initConnection import InitConnection
 from endpoints.connections.getBandwidthUsed import GetBandwidthUsed
+from endpoints.connections.updateFriends import UpdateFriends
+
 from endpoints.transaction.addTransaction import AddTransaction
 
 app = Flask(__name__, static_url_path="")
@@ -41,6 +44,7 @@ api.add_resource(GetStrongestSSID, '/api/getStrongestSSID', endpoint='get_strong
 api.add_resource(AddNewSSID, '/api/addNewSSID', endpoint='add_new_ssid')
 api.add_resource(InitConnection, '/api/initConnection', endpoint='init_connection')
 api.add_resource(GetBandwidthUsed, '/api/getBandwidthUsed', endpoint='get_bandwidth_used')
+api.add_resource(UpdateFriends, '/api/updateFriends', endpoint='update_friends')
 
 #transaction
 #authentication
