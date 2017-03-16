@@ -21,11 +21,8 @@ class Transaction():
         transactions = []
         for entry in user_transactions:
             cur_start = entry['start_time']
-            cur_end = entry['end_time']
             if start < cur_start < end:
                 entry.pop('_id')
-                entry['start_time'] = time.strftime('%m/%d/%Y %H:%M:%S', time.gmtime(cur_start/1000.))
-                entry['end_time'] = time.strftime('%m/%d/%Y %H:%M:%S', time.gmtime(cur_end / 1000.))
                 transactions.append(entry)
         return transactions
 
@@ -62,6 +59,7 @@ class Transaction():
                 data[k] = v
 
         transaction_db.insert_one(data)
+
         data['transaction_type'] = 'host'
         client_info = Account.get_user(data['user_name'])
         data['user_name'] = info['host']
