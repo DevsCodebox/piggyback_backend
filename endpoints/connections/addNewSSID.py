@@ -26,7 +26,7 @@ class AddNewSSID(Resource):
         friends = data.get('friends')
 
         response = {}
-        if Connections.add_new_ssid(user_name, ssid, ssid_strength, friends):
+        if Connections.add_new_ssid(user_name, ssid, ssid_strength):
             response['response'] = "SSID created"
             return jsonify(response)
         else:

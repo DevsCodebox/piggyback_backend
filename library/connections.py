@@ -16,14 +16,14 @@ class Connections():
         return best_ssid
 
     @staticmethod
-    def add_new_ssid(user_name, ssid, ssid_strength, friends):
+    def add_new_ssid(user_name, ssid, ssid_strength):
         connections = client.connections
 
         data = {}
         data['user_name'] = user_name
         data['ssid'] = ssid
         data['ssid_strength'] = ssid_strength
-        data['friends'] = friends
+        data['friends'] = []
         data['bandwidth'] = 0
         data['credits'] = 0
         temp = connections.find_one({'ssid': ssid})

@@ -15,6 +15,7 @@ class AddTransaction(Resource):
 
     def post(self):
         data = request.get_json()
+        print(data)
         if not data:
             data = {"response": "Bad request"}
             return jsonify(data)
