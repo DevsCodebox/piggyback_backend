@@ -53,7 +53,9 @@ class Connections():
     @staticmethod
     def update_friends(ssid, friends):
         connections = client.connections
-
+        row = connections.find_one({'ssid': ssid})
+        if not row:
+            return False
         connections.update(
             {'ssid': ssid},
             {'$set': {'friends': [] }}
