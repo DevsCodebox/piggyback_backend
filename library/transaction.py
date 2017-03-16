@@ -4,6 +4,7 @@ import copy
 from tools.mongo_connection import client
 from library.connections import Connections
 from library.account import Account
+from bson.objectid import ObjectId
 
 class Transaction():
     @staticmethod
@@ -58,13 +59,13 @@ class Transaction():
                 data[k] = info[k]
             else:
                 data[k] = v
-
+        data['_id'] = ObjectId()
         transaction_db.insert_one(data)
         client_info = Account.get_user(data['user_name'])
 
         data2 = copy.deepcopy(data)
         data2['transaction_type'] = 'host'
-
+        data2['_id'] = ObjectId()
         data2['user_name'] = info['host']
         transaction_db.insert_one(data2)
         return client_info['credits']
