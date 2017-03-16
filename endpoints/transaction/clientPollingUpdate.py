@@ -22,6 +22,7 @@ class ClientPollingUpdate(Resource):
         user_name = data.get('user_name')
         credit_usage = data.get('credit_usage')
         data_usage = data.get('data_usage')
+        print(data)
         remaining = Transaction.client_polling_update(ssid, user_name, credit_usage, data_usage)
         data = {"credits_remaining": remaining}
         if remaining:
