@@ -2,19 +2,20 @@
 
 """Alternative version of the ToDo RESTful server implemented using the
 Flask-RESTful extension."""
-from login import Login
-from addTransaction import AddTransaction
-from getReceipt import GetReceipt
-from createUser import CreateUser
-from changePassword import ChangePassword
-from updateCredits import UpdateCredits
-from updateSSIDStrength import UpdateSSIDStrength
-from getStrongestSSID import GetStrongestSSID
-from addNewSSID import AddNewSSID
 
-from flask import Flask, jsonify, abort, make_response
-from flask.ext.restful import Api, Resource, reqparse, fields, marshal
+from endpoints.changePassword import ChangePassword
+from endpoints.getStrongestSSID import GetStrongestSSID
+from endpoints.updateSSIDStrength import UpdateSSIDStrength
+from flask import Flask, jsonify, make_response
 from flask.ext.httpauth import HTTPBasicAuth
+from flask.ext.restful import Api
+from getReceipt import GetReceipt
+from updateCredits import UpdateCredits
+
+from endpoints.account.createUser import CreateUser
+from endpoints.connections.addNewSSID import AddNewSSID
+from endpoints.transaction.addTransaction import AddTransaction
+from library.login import Login
 
 app = Flask(__name__, static_url_path="")
 api = Api(app)

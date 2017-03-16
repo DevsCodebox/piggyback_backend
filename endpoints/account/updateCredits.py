@@ -1,7 +1,7 @@
-from flask import Flask, jsonify, url_for, redirect, request
-from flask.ext.restful import Api, Resource, reqparse, fields, marshal
-from account import Account
-import json
+from flask import jsonify, request
+from flask.ext.restful import Resource, reqparse
+
+from library.account import Account
 
 
 class UpdateCredits(Resource):

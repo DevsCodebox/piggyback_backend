@@ -1,4 +1,4 @@
-from mongo_connection import client
+from tools.mongo_connection import client
 
 class Authentication:
     @staticmethod

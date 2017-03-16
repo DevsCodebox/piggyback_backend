@@ -1,5 +1,5 @@
-from mongo_connection import client
-import json
+from tools.mongo_connection import client
+
 
 class Account():
     @staticmethod
@@ -71,7 +71,6 @@ class Account():
     @staticmethod
     def update_credits( user_name, credit_difference):
         users = client.users
-        credit = 0
 
         user = users.find_one({'user_name': user_name})
         credit = user['credits'] + credit_difference

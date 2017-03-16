@@ -1,7 +1,7 @@
-from flask import Flask, jsonify, url_for, redirect, request
-from flask.ext.restful import Api, Resource, reqparse, fields, marshal
-from authentication import Authentication
-from transaction import Transaction
+from flask import jsonify, request
+from flask.ext.restful import Resource, reqparse
+
+from library.transaction import Transaction
 
 
 class AddTransaction(Resource):

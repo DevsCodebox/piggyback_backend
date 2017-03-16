@@ -1,8 +1,9 @@
-from flask import Flask, jsonify, url_for, redirect, request
-from flask.ext.restful import Api, Resource, reqparse, fields, marshal
-from authentication import Authentication
 from account import Account
-import json
+from flask import jsonify, request
+from flask.ext.restful import Resource, reqparse
+
+from library.authentication import Authentication
+
 
 class Login(Resource):
     def __init__(self):

@@ -1,19 +1,21 @@
-from mongo_connection import client
 import time
+
+from tools.mongo_connection import client
+
 
 class Transaction():
     @staticmethod
-    def get_receipt(user_id, start, end):
+    def get_receipt(user_name, start, end):
         """
         Returns a list of dicts from the time period for a user
 
-        :param user_id:
+        :param user_name:
         :param start: must be epoch
         :param end: epoch int
         :return:
         """
         transaction_db = client.transactions
-        users_transactions_cursor = transaction_db.find({"user_id": user_id})
+        users_transactions_cursor = transaction_db.find({"user_name": user_name})
         user_transactions = [ i for i in users_transactions_cursor]
         transactions = []
         for entry in user_transactions:
