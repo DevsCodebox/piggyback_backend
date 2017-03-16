@@ -2,7 +2,7 @@ import time
 
 from tools.mongo_connection import client
 from library.connections import Connections
-from library.account import  Account
+from library.account import Account
 
 class Transaction():
     @staticmethod
@@ -63,9 +63,10 @@ class Transaction():
 
         transaction_db.insert_one(data)
         data['transaction_type'] = 'host'
+        client_info = Account.get_user(data['user_name'])
         data['user_name'] = data['host']
         transaction_db.insert_one(data)
-        return True
+        return client_info['credits']
 
 
     @staticmethod

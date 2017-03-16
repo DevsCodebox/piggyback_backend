@@ -24,7 +24,7 @@ class AddTransaction(Resource):
         data['host'] = host
         status = Transaction.add_transaction(data)
         if status:
-            data = {"response": "Successful request"}
+            data = {"credits_remaining": status}
             return jsonify(data)
         else:
             return make_response(jsonify({"response":"failed"}), 500)
