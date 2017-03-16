@@ -49,7 +49,7 @@ api.add_resource(UpdateFriends, '/api/updateFriends', endpoint='update_friends')
 
 #transaction
 api.add_resource(AddTransaction, '/api/transaction', endpoint='add_transaction')
-api.add_resource(GetReceipt, '/api/receipt', endpoint='get_receipt')
+api.add_resource(GetReceipt, '/api/getReceipt', endpoint='get_receipt')
 api.add_resource(ClientPollingUpdate, '/api/clientPollingUpdate', endpoint='client_polling_update')
 
 
