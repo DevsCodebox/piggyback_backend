@@ -39,7 +39,7 @@ class CreateUser(Resource):
         password_confirm = data.get('password_confirm')
         response = {}
         if Account.create_account(first_name, last_name, user_name, email, date_of_birth, password, password_confirm):
-            response['response'] =  "Account Created"
+            response['response'] = "Account Created"
             return jsonify(response)
         else:
             response['response'] = "Account Creation Failed"
