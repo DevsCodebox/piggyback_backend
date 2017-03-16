@@ -23,7 +23,7 @@ class UpdateFriends(Resource):
         ssid = data.get('ssid')
         response = {}
         response['response'] = Connections.update_friends(ssid, friend_list)
-        if response['status'] != True:
+        if response['response'] != True:
             return make_response(jsonify(response), 500)
         else:
             return jsonify(response)
