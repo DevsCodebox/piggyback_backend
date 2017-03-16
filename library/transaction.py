@@ -1,4 +1,5 @@
 import time
+import copy
 
 from tools.mongo_connection import client
 from library.connections import Connections
@@ -61,10 +62,11 @@ class Transaction():
         transaction_db.insert_one(data)
         client_info = Account.get_user(data['user_name'])
 
-        data['transaction_type'] = 'host'
+        data2 = copy.deepcopy(data)
+        data2['transaction_type'] = 'host'
 
-        data['user_name'] = info['host']
-        transaction_db.insert_one(data)
+        data2['user_name'] = info['host']
+        transaction_db.insert_one(data2)
         return client_info['credits']
 
 
