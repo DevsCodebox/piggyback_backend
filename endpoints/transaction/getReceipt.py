@@ -19,7 +19,9 @@ class GetReceipt(Resource):
         '{"user_name":"test",
         "start":epochtime,
         "end":epochtime...
-        }'
+        }']=
+
+        '{"start_time": 1458112324472, "user_name": "a", "end_time": 1489648324472}'
         :return:
         """
         data = request.get_json()

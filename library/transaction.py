@@ -16,6 +16,9 @@ class Transaction():
         :return:
         """
         transaction_db = client.transactions
+        print(transaction_db)
+        transaction_db.find()
+        print('test')
         user_transactions = transaction_db.find({'user_name': user_name})
         transactions = []
         for entry in user_transactions:
