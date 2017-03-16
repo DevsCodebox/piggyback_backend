@@ -17,6 +17,7 @@ class Transaction():
         """
         transaction_db = client.transactions
         users_transactions_cursor = transaction_db.find({"user_name": user_name})
+        print(users_transactions_cursor)
         user_transactions = [ i for i in users_transactions_cursor]
         transactions = []
         for entry in user_transactions:
