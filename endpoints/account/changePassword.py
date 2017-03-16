@@ -1,7 +1,6 @@
-from account import Account
 from flask import jsonify, request, make_response
 from flask.ext.restful import Resource, reqparse
-
+from library.account import Account
 
 class ChangePassword(Resource):
     def __init__(self):

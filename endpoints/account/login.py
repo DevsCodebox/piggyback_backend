@@ -1,4 +1,4 @@
-from account import Account
+from library.account import Account
 from flask import jsonify, request, make_response
 from flask.ext.restful import Resource, reqparse
 
