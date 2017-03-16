@@ -29,7 +29,7 @@ class GetReceipt(Resource):
         user_name = data.get('user_name')
         start_time = data.get('start')
         end_time = data.get('end')
-
+        print(data)
         receipt = Transaction.get_receipt(user_name, start_time, end_time)
         if receipt:
             return json.dumps(receipt)
