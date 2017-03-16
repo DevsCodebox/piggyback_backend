@@ -86,6 +86,8 @@ class Connections():
         """
         connections = client.connections
         row = connections.find_one({'ssid': ssid})
+        if not row:
+            return True
         bandwidth = row['bandwidth'] + bandwidth_difference
         connections.update(
             {'ssid': ssid},
