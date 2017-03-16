@@ -20,6 +20,7 @@ class UpdateFriends(Resource):
             return jsonify(data)
 
         friend_list = data.get('friend_list')
+        ssid = data.get('ssid')
         response = {}
-        response['SSID'] = Connections.update_friends(friend_list)
+        response['SSID'] = Connections.update_friends(ssid, friend_list)
         return jsonify(response)
