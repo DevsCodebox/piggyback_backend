@@ -2,10 +2,10 @@
 
 """Alternative version of the ToDo RESTful server implemented using the
 Flask-RESTful extension."""
-
 from endpoints.account.changePassword import ChangePassword
-from endpoints.account.getStrongestSSID import GetStrongestSSID
-from endpoints.account.updateSSIDStrength import UpdateSSIDStrength
+from endpoints.connections.getStrongestSSID import GetStrongestSSID
+from endpoints.connections.updateSSIDStrength import UpdateSSIDStrength
+
 from flask import Flask, jsonify, make_response
 from flask.ext.httpauth import HTTPBasicAuth
 from flask.ext.restful import Api
