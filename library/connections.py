@@ -103,6 +103,8 @@ class Connections():
         """
         connections = client.connections
         row = connections.find_one({'ssid': ssid})
+        if not row:
+            return True
         credit = row['credits'] + credit_difference
         connections.update(
             {'ssid': ssid},
