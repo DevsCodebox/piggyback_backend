@@ -1,5 +1,5 @@
 from account import Account
-from flask import jsonify, request
+from flask import jsonify, request, make_response
 from flask.ext.restful import Resource, reqparse
 
 from library.authentication import Authentication
@@ -27,4 +27,4 @@ class Login(Resource):
             return user_info
         else:
             data = {"response": "Bad Login"}
-            return jsonify(data), 500
+            return make_response(jsonify(data), 500)
