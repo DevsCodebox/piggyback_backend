@@ -121,6 +121,10 @@ class Connections():
                 {'ssid': ssid},
                 {'$set': {'bandwidth': 0, 'credits': 0}}
             )
+            connections.update(
+                {'ssid': ssid},
+                {'$set': {'user_name': user_name}}
+            )
 
             return True
         else:
