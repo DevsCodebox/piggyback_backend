@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import jsonify, request, make_response
 from flask.ext.restful import Resource, reqparse
 
 from library.account import Account
@@ -27,6 +27,7 @@ class UpdateCredits(Resource):
         response = {}
         if Account.update_credits(user_name, credit_difference):
             response['response'] = 'Credits updated'
+            return jsonify(response)
         else:
             response['response'] = 'Credit Update Failed'
-        return jsonify(response)
+            return make_response(jsonify(response))

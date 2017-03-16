@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import jsonify, request, make_response
 from flask.ext.restful import Resource, reqparse
 
 from library.transaction import Transaction
@@ -24,4 +24,7 @@ class ClientPollingUpdate(Resource):
         bandwidth = data.get('bandwidth')
         remaining = Transaction.client_polling_update(ssid, user_name, credit, bandwidth)
         data = {"credits_remaining": remaining}
-        return jsonify(data)
+        if remaining:
+            return jsonify(data)
+        else:
+            return make_response(jsonify({"response":"fail"}), 500)

@@ -67,6 +67,7 @@ class Transaction():
         data['transaction_type'] = 'host'
         data['user_name'] = data['host']
         transaction_db.insert_one(data)
+        return True
 
 
     @staticmethod

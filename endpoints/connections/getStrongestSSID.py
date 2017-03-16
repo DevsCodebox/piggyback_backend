@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import jsonify, request, make_response
 from flask.ext.restful import Resource, reqparse
 
 from library.connections import Connections
@@ -22,4 +22,7 @@ class GetStrongestSSID(Resource):
         ssid_list = data.get('ssid_list')
         response = {}
         response['SSID'] = Connections.strongest_ssid(ssid_list)
-        return jsonify(response)
+        if response['SSID'] != 0:
+            return jsonify(response)
+        else:
+            return make_response(jsonify(response))

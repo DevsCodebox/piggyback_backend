@@ -56,7 +56,7 @@ class Connections():
 
         connections.update(
             {'ssid': ssid},
-            {'$set': {'friends': []}}
+            {'$set': {'friends': [] }}
         )
         connections.update(
             {'ssid': ssid},
@@ -133,7 +133,10 @@ class Connections():
         """
         connections = client.connections
         row = connections.find_one({'ssid': ssid})
-        return row['bandwidth']
+        if row:
+            return row['bandwidth']
+        else:
+            return False
 
     @staticmethod
     def get_user_name(ssid):

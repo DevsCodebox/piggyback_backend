@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import jsonify, request, make_response
 from flask.ext.restful import Resource, reqparse
 
 from library.connections import Connections
@@ -22,6 +22,7 @@ class InitConnection(Resource):
         response = {}
         if Connections.init_connections(ssid):
             response['response'] = "SSID initialised"
+            return jsonify(response)
         else:
             response['response'] = "SSID failed to update"
-        return jsonify(response)
+            return make_response(jsonify(response), 500)

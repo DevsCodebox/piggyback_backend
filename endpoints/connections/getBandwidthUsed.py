@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import jsonify, request, make_response
 from flask.ext.restful import Resource, reqparse
 
 from library.connections import Connections
@@ -21,4 +21,7 @@ class GetBandwidthUsed(Resource):
         response = {}
         ssid = data.get('ssid')
         response['SSID'] = Connections.get_bandwidth_used(ssid)
-        return jsonify(response)
+        if response['SSID']:
+            return jsonify(response)
+        else:
+            return make_response(jsonify(response), 500)

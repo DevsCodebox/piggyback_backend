@@ -1,6 +1,6 @@
 import json
 
-from flask import jsonify, request
+from flask import jsonify, request, make_response
 from flask.ext.restful import Resource, reqparse
 from transaction import Transaction
 
@@ -35,4 +35,4 @@ class GetReceipt(Resource):
             return json.dumps(receipt)
         else:
             data = {"response": "No Receipt"}
-            return jsonify(data)
+            return make_response(jsonify(data), 500)

@@ -1,5 +1,5 @@
 from account import Account
-from flask import jsonify, request
+from flask import jsonify, request, make_response
 from flask.ext.restful import Resource, reqparse
 
 
@@ -32,4 +32,4 @@ class ChangePassword(Resource):
         if Account.change_password(user_name, prev_password, password, password_confirm):
             return jsonify({'response': 'ok'})
         else:
-            return jsonify({'response': 'Bad Request'})
+            return make_response(jsonify({'response': 'Bad Request'}), 500)

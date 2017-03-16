@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import jsonify, request, make_response
 from flask.ext.restful import Resource, reqparse
 
 from library.connections import Connections
@@ -23,6 +23,7 @@ class UpdateSSIDStrength(Resource):
         response = {}
         if Connections.update_ssid_strength(ssid, ssid_strength):
             response['response'] = "SSID updated"
+            return jsonify(response)
         else:
             response['response'] = "SSID failed to update"
-        return jsonify(response)
+            return make_response(jsonify(response), 500)

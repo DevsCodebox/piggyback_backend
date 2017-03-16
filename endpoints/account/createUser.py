@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import jsonify, request, make_response
 from flask.ext.restful import Resource, reqparse
 
 from library.account import Account
@@ -40,6 +40,7 @@ class CreateUser(Resource):
         response = {}
         if Account.create_account(first_name, last_name, user_name, email, date_of_birth, password, password_confirm):
             response['response'] =  "Account Created"
+            return jsonify(response)
         else:
             response['response'] = "Account Creation Failed"
-        return jsonify(response)
+            return make_response(jsonify(response), 500)

@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import jsonify, request, make_response
 from flask.ext.restful import Resource, reqparse
 
 from library.transaction import Transaction
@@ -22,6 +22,9 @@ class AddTransaction(Resource):
         ssid = data.get('ssid')
         host = Connections.get_user_name(ssid)
         data['host'] = host
-        Transaction.add_transaction(data)
-        data = {"response": "Successful request"}
-        return jsonify(data)
+        status = Transaction.add_transaction(data)
+        if status:
+            data = {"response": "Successful request"}
+            return jsonify(data)
+        else:
+            return make_response(jsonify({"response":"failed"}), 500)

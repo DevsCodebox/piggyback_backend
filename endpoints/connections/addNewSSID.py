@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import jsonify, request, make_response
 from flask.ext.restful import Resource, reqparse
 
 from library.connections import Connections
@@ -28,6 +28,7 @@ class AddNewSSID(Resource):
         response = {}
         if Connections.add_new_ssid(user_name, ssid, ssid_strength, friends):
             response['response'] = "SSID created"
+            return jsonify(response)
         else:
             response['response'] = "SSID Failed to Create"
-        return jsonify(response)
+            return make_response(jsonify(response), 500)
