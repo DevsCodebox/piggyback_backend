@@ -150,4 +150,7 @@ class Connections():
         """
         connections = client.connections
         row = connections.find_one({'ssid': ssid})
-        return row['user_name']
+        if row:
+            return row['user_name']
+        else:
+            return None
