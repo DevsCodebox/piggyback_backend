@@ -64,7 +64,7 @@ class Transaction():
         transaction_db.insert_one(data)
         data['transaction_type'] = 'host'
         client_info = Account.get_user(data['user_name'])
-        data['user_name'] = data['host']
+        data['user_name'] = info['host']
         transaction_db.insert_one(data)
         return client_info['credits']
 
