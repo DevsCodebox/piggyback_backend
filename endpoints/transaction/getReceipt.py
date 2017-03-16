@@ -26,11 +26,11 @@ class GetReceipt(Resource):
         if not data:
             data = {"response": "Bad Request"}
             return jsonify(data)
-        user_id = data.get('user_id')
+        user_name = data.get('user_name')
         start_time = data.get('start')
         end_time = data.get('end')
 
-        receipt = Transaction.get_receipt(user_id,start_time, end_time)
+        receipt = Transaction.get_receipt(user_name,start_time, end_time)
         if receipt:
             return json.dumps(receipt)
         else:
