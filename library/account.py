@@ -6,7 +6,9 @@ class Account():
     def get_user(user_name):
         user_db = client.users
         user = user_db.find_one({'user_name': user_name})
-        return user
+        if user:
+            return user
+
 
     @staticmethod
     def create_account(first_name, last_name, user_name, email, date_of_birth, password, password_confirm):

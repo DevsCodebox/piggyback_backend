@@ -1,7 +1,8 @@
 import time
 
 from tools.mongo_connection import client
-
+from library.connections import Connections
+from library.account import  Account
 
 class Transaction():
     @staticmethod
@@ -63,3 +64,19 @@ class Transaction():
                 data[k] = v
 
         transaction_db.insert_one(data)
+
+    @staticmethod
+    def client_polling_update(ssid, user_name, credits, bandwidth):
+        friends = Connections.get_friends(ssid)
+
+        if user_name not in friends:
+            Account.update_credits(user_name, -credits)
+            Connections.update_credits(ssid, credits)
+            host_name = Connections.get_user_name(ssid)
+            Account.update_credits(host_name, credits)
+
+        Connections.update_bandwidth(ssid, bandwidth)
+
+        credits_left = Account.get_user(user_name)['credits']
+
+        return credits_left

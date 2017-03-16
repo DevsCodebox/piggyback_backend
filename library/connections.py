@@ -61,6 +61,13 @@ class Connections():
         return True
 
     @staticmethod
+    def get_friends(ssid):
+        connections = client.connections
+        row = connections.find_one({'ssid': ssid})
+        friends = row['friends']
+        return friends
+
+    @staticmethod
     def update_bandwidth(ssid, bandwidth_difference):
         """
         always going to be going up.
@@ -123,3 +130,14 @@ class Connections():
         connections = client.connections
         row = connections.find_one({'ssid': ssid})
         return row['bandwidth']
+
+    @staticmethod
+    def get_user_name(ssid):
+        """
+        returns the user_name associated withe host of the ssid
+        :param ssid:
+        :return:
+        """
+        connections = client.connections
+        row = connections.find_one({'ssid': ssid})
+        return row['user_name']
