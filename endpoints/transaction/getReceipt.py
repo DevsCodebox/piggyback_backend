@@ -2,7 +2,7 @@ import json
 
 from flask import jsonify, request, make_response
 from flask.ext.restful import Resource, reqparse
-from transaction import Transaction
+from library.transaction import Transaction
 
 
 class GetReceipt(Resource):
