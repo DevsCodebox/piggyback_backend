@@ -16,6 +16,7 @@ from endpoints.connections.addNewSSID import AddNewSSID
 from endpoints.connections.getStrongestSSID import GetStrongestSSID
 from endpoints.connections.updateSSIDStrength import UpdateSSIDStrength
 from endpoints.connections.initConnection import InitConnection
+from endpoints.connections.getBandwidthUsed import GetBandwidthUsed
 from endpoints.transaction.addTransaction import AddTransaction
 
 app = Flask(__name__, static_url_path="")
@@ -39,6 +40,7 @@ api.add_resource(UpdateSSIDStrength, '/api/updateSSIDStrength', endpoint='update
 api.add_resource(GetStrongestSSID, '/api/getStrongestSSID', endpoint='get_strongest_ssid')
 api.add_resource(AddNewSSID, '/api/addNewSSID', endpoint='add_new_ssid')
 api.add_resource(InitConnection, '/api/initConnection', endpoint='init_connection')
+api.add_resource(GetBandwidthUsed, '/api/getBandwidthUsed', endpoint='get_bandwidth_used')
 
 #transaction
 #authentication
