@@ -112,3 +112,14 @@ class Connections():
             return True
         else:
             return False
+
+    @staticmethod
+    def get_bandwidth_used(ssid):
+        """
+        returns the bandwidth used on a ssid
+        :param ssid:
+        :return:
+        """
+        connections = client.connections
+        row = connections.find_one({'ssid': ssid})
+        return row['bandwidth']
