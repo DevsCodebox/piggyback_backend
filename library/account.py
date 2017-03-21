@@ -71,6 +71,13 @@ class Account():
         return True
 
     @staticmethod
+    def get_credits(user_name):
+        users = client.users
+
+        user = users.find_one({'user_name': user_name})
+        return user['credits']
+
+    @staticmethod
     def update_credits( user_name, credit_difference):
         users = client.users
 

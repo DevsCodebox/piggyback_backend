@@ -1,5 +1,6 @@
 from tools.mongo_connection import client
 
+from library.account import Account
 
 class Connections():
     # function to return the max strength ssid from a list
@@ -148,6 +149,7 @@ class Connections():
         connections = client.connections
         row = connections.find_one({'ssid': ssid})
         if row:
+            row['host_credits'] = Account.get_credits(row['user_name'])
             row.pop('_id')
             print(row)
             return row
