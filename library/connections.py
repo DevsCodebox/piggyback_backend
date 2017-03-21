@@ -148,6 +148,8 @@ class Connections():
         connections = client.connections
         row = connections.find_one({'ssid': ssid})
         if row:
+            row.pop('_id')
+            print(row)
             return row
         else:
             return False
